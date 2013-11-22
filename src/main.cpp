@@ -6,12 +6,15 @@
 
 void ex_ps1(void)
 {
-	sys_print("EX_PS1's first message.");
-	sys_swtch(NULL);
-	
-	sys_print("EX_PS1's second message.");
-	sys_swtch(NULL);
-	sys_print("EX_PS1's third message.");
+	int i;
+	char msg[100];
+
+	for ( i = 0; i < 10; i++ )
+	{
+		sprintf(msg, "PS1's message: %d\n", i);
+		sys_print(msg);
+		sys_swtch(NULL);
+	}
 
 	sys_terminate(NULL);
 }
@@ -19,14 +22,35 @@ void ex_ps1(void)
 
 void ex_ps2(void)
 {
-	sys_print("EX_PS2's first message.");
-	sys_swtch(NULL);
-	sys_print("EX_PS2's second message.");
+	int i;
+	char msg[100];
+
+	for ( i = 0; i < 10; i++ )
+	{
+		sprintf(msg, "PS2's message: %d\n", i);
+		sys_print(msg);
+		sys_swtch(NULL);
+	}
 
 	sys_terminate(NULL);
 }
 
 
+
+void ex_ps3(void)
+{
+	int i;
+	char msg[100];
+
+	for ( i = 0; i < 10; i++ )
+	{
+		sprintf(msg, "PS3's message: %d\n", i);
+		sys_print(msg);
+		sys_swtch(NULL);
+	}
+
+	sys_terminate(NULL);
+}
 
 void main(void)
 {
@@ -34,6 +58,7 @@ void main(void)
 
 	create_process(ex_ps1);
 	create_process(ex_ps2);
+	create_process(ex_ps3);
 
 	scheduler();
 }

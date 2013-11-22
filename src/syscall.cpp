@@ -1,3 +1,8 @@
+/*
+ * vos/syscall.c
+ *
+ * Copyright (C) 2013, 2013 Sungho Park
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <setjmp.h>
@@ -16,14 +21,21 @@ int sys_terminate(void *arg)
 int sys_print(void *arg)
 {
 	char *str;
+	
+	sys_swtch(NULL);
 
 	str = (char *)arg;
-
 	puts(str);
 
+	sys_swtch(NULL);
 	return 0;
 }
 
+/*
+   Call context switch.
+   Parameters
+     * arg: 
+ */
 int sys_swtch(void *arg)
 {
 	unsigned long r_esp;

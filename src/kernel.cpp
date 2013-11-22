@@ -39,7 +39,7 @@ struct proc *get_process(int pid)
  * Parameters:
  *    - func: a function pointer to a function for application.
  */
-void create_process(void (*func)(void))
+int create_process(void (*func)(void))
 {
 	int i;
 
@@ -50,6 +50,9 @@ void create_process(void (*func)(void))
 			break;
 		}
 	}
+
+	if ( i == PROC_SIZE )
+		return -1;
 
 	memset( &proc_list[i], 0, sizeof ( struct proc ) );
 	memset( &user_list[i], 0, sizeof ( struct user ) );
