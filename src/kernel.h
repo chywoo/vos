@@ -44,7 +44,7 @@ void kernel_init(void);
 
 /* Process */
 struct proc *get_process(int pid);
-void create_process(void (*func)(void));
+int create_process(void (*func)(void));
 
 
 /* Queue */

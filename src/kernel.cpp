@@ -1,11 +1,15 @@
 /*
- Desc : 프로세스 관련 기능 등 현재 제대로 구현이 안 된 모든 커널 기능을 포함
+ * Kernel.cpp
+ *
+ * Copyright (C) 2013, 2013 Sungh Park
+ *
+ * 프로세스 관련 기능 등 현재 제대로 구현이 안 된 모든 커널 기능을 포함
  */
 #include <memory.h>
 
 #include "kernel.h"
 
-#define PROC_SIZE  2
+#define PROC_SIZE  1024
 
 
 struct proc proc_list[PROC_SIZE + 1];
@@ -29,6 +33,12 @@ struct proc *get_process(int pid)
 }
 
 
+/*
+ * Create process structure and put it in ready queue array.
+ * In this time, application is made by only function. It seems to be a thread.
+ * Parameters:
+ *    - func: a function pointer to a function for application.
+ */
 void create_process(void (*func)(void))
 {
 	int i;
